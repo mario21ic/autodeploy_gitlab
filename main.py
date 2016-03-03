@@ -32,4 +32,4 @@ def main():
         print 'Hubo error'
 
 if __name__=="__main__":
-    run(host='localhost', reloader=True, debug=True, port=port)
+    run(host='0.0.0.0', reloader=True, debug=True, port=port)
