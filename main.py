@@ -3,6 +3,7 @@
 
 from ConfigParser import ConfigParser
 from bottle import route, get, post, request, run, template, redirect
+import os
 
 config = ConfigParser()
 config.read(os.path.join("config.ini"))
