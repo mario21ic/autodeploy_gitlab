@@ -13,11 +13,7 @@ port = config.getint("app", "port")
 
 app_path = config.get("deploy", "path")
 branch = config.get("deploy", "branch")
-command = config.get("deploy", "command")
-
-@get('/')
-def index():
-    return "Hello"
+deploy_cmd = config.get("deploy", "command")
 
 @post('/')
 def main():
@@ -28,9 +24,16 @@ def main():
         print "object_kind:",object_kind
         ref = request.json.get('ref')
         print "ref:",ref
-        os.command(command)
+        if branch in ref:
+            command_cd = "cd " + app_path + " && "
+            os.command(command_cd + " git pull origin " + branch)
+            os.command(command_cd + deploy_cmd)
     except:
         print 'Hubo error'
+
+@get('/')
+def index():
+    return "Hello"
 
 if __name__=="__main__":
     run(host='0.0.0.0', reloader=True, debug=True, port=port)
