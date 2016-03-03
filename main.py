@@ -17,7 +17,7 @@ command = config.get("deploy", "command")
 
 @get('/')
 def index():
-    print "Hello"
+    return "Hello"
 
 @post('/')
 def main():
@@ -28,6 +28,7 @@ def main():
         print "object_kind:",object_kind
         ref = request.json.get('ref')
         print "ref:",ref
+        os.command(command)
     except:
         print 'Hubo error'
 
