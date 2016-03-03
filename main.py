@@ -15,6 +15,10 @@ app_path = config.get("deploy", "path")
 branch = config.get("deploy", "branch")
 command = config.get("deploy", "command")
 
+@get('/')
+def index():
+    print "Hello"
+
 @post('/')
 def main():
     try:
