@@ -1,0 +1,8 @@
+[app]
+port = 8000
+log = ./output.log
+
+[deploy]
+path = /apps
+branch = prod
+command = KILL -HUP $(cat pids/unicorn.pid) && unicorn_rails -c config/unicorn.rb -D
