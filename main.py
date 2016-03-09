@@ -26,8 +26,14 @@ def main():
         print "ref:",ref
         if branch in ref:
             command_cd = "cd " + app_path + " && "
-            os.command(command_cd + " git pull origin " + branch)
-            os.command(command_cd + deploy_cmd)
+
+            command_pull = command_cd + " git pull origin " + branch
+            print "Ejecutando: " + command_pull
+            os.system(command_pull)
+
+            command_restart = command_cd + deploy_cmd
+            print "Ejecutando " + command_restart
+            os.system(command_restart)
     except:
         print 'Hubo error'
 
